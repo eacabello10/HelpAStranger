@@ -1,3 +1,10 @@
 * {
   box-sizing: border-box
 }
+
+footer {
+  color : white;
+  background-color: rgb(35, 32, 32);
+  font-size: 12px;
+  padding: 15px 0;
+}
