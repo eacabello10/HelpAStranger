@@ -29,6 +29,12 @@ class App extends Component {
         }
     }
 
+    componentWillUpdate(newProps){
+        if (!this.state.currentUser && newProps.user) {
+            
+        }
+    }
+
     sendMessage(text) {
         let newMessage = {
             text: "hi",
@@ -72,15 +78,17 @@ class App extends Component {
 }
 
 App.propTypes = {
-    posts : PropTypes.array.isRequired
+    posts : PropTypes.array.isRequired,
+    user : PropTypes.object,
+    chats : PropTypes.array.isRequired
 };
 
 export default createContainer(()=>{
-    if(this.state.currentChat){
-        return { posts : Posts.find({}).fetch()};
-    } else {
-        return { posts : Posts.find({}).fetch(),
-                 chat : Chatrooms.findOne(this.state.currentChat._id)
-        };
-    }
+
+    Meteor.subscribe('tasks');
+
+    return { posts : Posts.find({}, { sort: { date: -1 } }).fetch(),
+             user : Meteor.user(),
+             chats : Chatrooms.find({}).fetch()        
+    };
 }, App);

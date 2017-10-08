@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 
+import AccountsUIWrapper from './AccountsUIWrapper.jsx';
+
 class Navigation extends Component {
     constructor(props){
         super(props);
@@ -20,15 +22,8 @@ class Navigation extends Component {
                             <a className="navbar-brand" href="#">WebSiteName</a>
                         </div>
                         <div className="collapse navbar-collapse" id="myNavbar">
-                            <ul className="nav navbar-nav navbar-right">
-                            <li className="active"><a href="#">Home</a></li>
-                            <li><a href="#">Page 1</a></li>
-                            <li><a href="#">Page 2</a></li> 
-                            <li><a href="#">Page 3</a></li> 
-                            </ul>
-                            <ul className="nav navbar-nav navbar-right">
-                            <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                            <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+                            <ul className="nav navbar-nav">
+                                <li className="active"><AccountsUIWrapper /></li>
                             </ul>
                         </div>
                     </div>
