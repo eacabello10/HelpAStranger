@@ -9,6 +9,7 @@ import PostViewer from "./PostViewer.jsx";
 import Chat from "./Chat.jsx";
 
 import {Posts} from "../api/Posts.js";
+import {Chatrooms} from "../api/Chatrooms.js";
 
 
 import "./App.css";
@@ -57,5 +58,11 @@ App.propTypes = {
 };
 
 export default createContainer(()=>{
-    return { posts : Posts.find({}).fetch()};
+    if(this.state.currentChat){
+        return { posts : Posts.find({}).fetch()};
+    } else {
+        return { posts : Posts.find({}).fetch(),
+                 chat : Chatrooms.findOne(this.state.currentChat._id)
+        };
+    }
 }, App);
