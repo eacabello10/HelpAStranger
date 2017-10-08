@@ -12,7 +12,7 @@ class Footer extends Component {
                 <footer className="container-fluid">
                     <div className="row">
                         <div className="col-sm-3">
-                            <p id="copy">&copy; 2017 Jairo Emilio Bautista Mora</p>
+                            <p id="copy">&copy; 2017 Jairo Emilio Bautista Mora &amp; Eduardo Cabello</p>
                         </div>
                         <div className="col-sm-3">Gente ayudada {this.props.count}</div>
                     </div>
