@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PropTypes from "prop-types";
 
+import Message from "./Message.jsx"
 import "./Chat.css";
 
 class Chat extends Component {
@@ -16,7 +17,11 @@ class Chat extends Component {
                     <p className="welcome">Welcome, <b></b></p>
                 </div>
         
-                <div id="chatbox"></div>
+                <div id="chatbox">
+                {this.props.messages.map((message, i) => {
+                    return <Message message={message} key={i}/>
+                })}
+                </div>
         
                 <div className="message">
                     <input className="usermsg form-control" type="text" id="usermsg" size="63" />
@@ -29,7 +34,7 @@ class Chat extends Component {
 }
 
 Chat.propTypes = {
-    
+    messages: PropTypes.array.isRequired
 };
 
 export default Chat;

@@ -17,8 +17,26 @@ class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            currentUser : null
+            currentUser : null,
+            messages: [
+                {
+                    text: "hello",
+                    author: "anontest",
+                    date: (new Date()).getTime()
+                }
+            ]
         }
+    }
+
+    sendMessage(text) {
+        let newMessage = {
+            text: "hi",
+            author: "anontest2",
+            date: (new Date()).getTime()
+        }
+        this.setState({
+            messages: messages.append(newMessage)
+        });
     }
 
     newPost(text){
@@ -44,7 +62,7 @@ class App extends Component {
                     <div className="row">
                         <Menu/>
                         <PostViewer posts={this.props.posts} addpost={this.newPost.bind(this)}/>
-                        <Chat/>
+                        <Chat messages={this.state.messages} newMessage={this.sendMessage.bind(this)}/>
                     </div>
                 </div>
                 <Footer count = {1}/>
