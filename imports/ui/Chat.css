@@ -1,4 +1,4 @@
-form, p{
+div.message, p{
     margin:7px;
     padding:7px; 
 }
@@ -34,10 +34,10 @@ a {
     overflow:auto; 
 }
 
-#usermsg {
+/*#usermsg {
     width:395px;
     border:1px solid #ACD8F0; 
-}
+}*/
 
 #submit { 
 	width: 60px; 
@@ -49,8 +49,4 @@ a {
 
 .welcome { 
 	float:left; 
-}  
-
-.logout { 
-	float:right; 
 }

@@ -10,7 +10,6 @@ import Chat from "./Chat.jsx";
 
 import {Posts} from "../api/Posts.js";
 
-import AccountsUIWrapper from './AccountsUIWrapper.jsx';
 
 import "./App.css";
 
@@ -40,8 +39,8 @@ class App extends Component {
         return (
             <div  className="app">
                 <Navigation user={this.state.currentUser}/>
-                <AccountsUIWrapper />
-                <div className="container">
+                
+                <div className="container-fluid">
                     <div className="row">
                         <Menu/>
                         <PostViewer posts={this.props.posts} addpost={this.newPost.bind(this)}/>

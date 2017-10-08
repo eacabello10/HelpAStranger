@@ -11,7 +11,7 @@ class PostViewer extends Component {
 
     render(){
         return (
-            <div className="postViewer col-md-5">
+            <div className="postViewer col-sm-5">
                 <PostInput addpost={this.props.addpost}/>
                 {this.props.posts.map((post, i) => {
                     return <Post post={post} key={i}/>

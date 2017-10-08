@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 
 import "./Chat.css";
 
-class Chat extends Component {
+class Messages extends Component {
     constructor(props){
         super(props);
     }
 
     render(){
         return (
-        <div  className="chat col-sm-5">
+        <div  className="messages col-sm-4">
             <div className="row">
                 <div id="menu">
                     <p className="welcome">Welcome, <b></b></p>
@@ -28,8 +28,8 @@ class Chat extends Component {
     }
 }
 
-Chat.propTypes = {
+Messages.propTypes = {
     
 };
 
-export default Chat;
+export default Messages;
