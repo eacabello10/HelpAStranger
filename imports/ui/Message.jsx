@@ -10,7 +10,7 @@ class Message extends Component {
 
     render(){
         return (
-        <div className="message col-sm-4">
+        <div className="message col-sm-6">
             <textfield>{this.props.message.text}</textfield>
             <h6>{this.props.message.date}</h6>
         </div>
