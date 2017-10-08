@@ -10,12 +10,28 @@ import Chat from "./Chat.jsx";
 
 import {Posts} from "../api/Posts.js";
 
+import "./App.css";
+
 class App extends Component {
     constructor(props){
         super(props);
         this.state = {
             currentUser : null
         }
+    }
+
+    newPost(text){
+        let newPost = {
+            text : text,
+            author : "anontest",
+            date : (new Date()).getTime(),
+            animos : 0,
+            nogive : 0,
+            better : 0,
+            keywords : []
+        }
+        Posts.insert(newPost);
+        console.log(this.props.posts);
     }
 
     render(){
@@ -25,7 +41,7 @@ class App extends Component {
                 <div className="container">
                     <div className="row">
                         <Menu/>
-                        <PostViewer posts={this.props.posts}/>
+                        <PostViewer posts={this.props.posts} addpost={this.newPost.bind(this)}/>
                         <Chat/>
                     </div>
                 </div>
