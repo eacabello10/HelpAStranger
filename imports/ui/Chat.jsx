@@ -34,7 +34,7 @@ class Chat extends Component {
         <div  className="chat col-sm-5">
             <div className="row">
                 <div id="menu">
-                    <p className="welcome">{this.props.chat.keyword[0]} </p>
+                    <p className="welcome">{this.props.chat.keywords[0]} </p>
                     
                 </div>
         

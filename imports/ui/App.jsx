@@ -84,6 +84,43 @@ class App extends Component {
     }
 
     newPost(text){
+        let words = text.toLowerCase()
+            .replace(/\slos\s/g, " ").replace(/\slas\s/g, " ").replace(/\sy\s/g, " ")
+            .replace(/\sun\s/g, " ").replace(/\sa\s/g, " ").replace(/\sla\s/g, " ")
+            .replace(/\slos\s/g, " ").replace(/\spor\s/g, " ").replace(/\sde\s/g, " ")
+            .replace(/,/g, " ").replace(/\smi\s/g, " ")
+            .replace(/\sme\s/g, " ").replace(/\smuy\s/g, " ").replace(/\ssoy\s/g, " ")
+            .replace(/;/g, " ").replace(/:/g, " ").replace(/!/g, " ")
+            .replace(/¿/g, " ").replace(/¡/g, " ").replace(/\scon\s/g, " ")
+            .replace(/\sno\s/g, " ").replace(/\ssi\s/g, " ").split(/\s+/);
+
+            var wordsMap = {};
+            words.forEach(function (key) {
+              if (wordsMap.hasOwnProperty(key)) {
+                wordsMap[key]++;
+              } else {
+                wordsMap[key] = 1;
+              }
+            });
+    
+            var finalWordsArray = [];
+            finalWordsArray = Object.keys(wordsMap).map(function (key) {
+              return {
+                name: key,
+                total: wordsMap[key]
+              };
+            });
+          
+            finalWordsArray.sort(function (a, b) {
+              return b.total - a.total;
+            });
+
+            keywords = finalWordsArray.map((word) => {
+                return word.name;
+            });
+
+
+
         let newPost = {
             text : text,
             author : this.state.currentUser.anon,
@@ -91,12 +128,12 @@ class App extends Component {
             animos : 0,
             nogive : 0,
             better : 0,
-            keywords : ["hola", "estano"]
+            keywords : keywords.slice(0,3)
         }
         Tracker.autorun (() => {
             Meteor.call('posts.insert', newPost, (error, result) => {
                 let chat = {
-                    keyword : newPost.keywords.slice(0,1),
+                    keywords : newPost.keywords,
                     participants : [],
                     messages : [] 
                 };
@@ -104,12 +141,6 @@ class App extends Component {
                     Meteor.call("chats.addme", this.state.currentUser, result3, (error2, result2) => {
                         this.setState({
                             currentChat : result2
-                        }, () => {
-                            /**if (Meteor.isServer) {
-                                Meteor.publish("chats.current", function currenChatPubliction(){
-                                    return Chats.find({_id : result._id});
-                                });
-                            }*/
                         });
                     });
                 });
@@ -128,7 +159,7 @@ class App extends Component {
                         <PostViewer posts={this.props.posts} vote={this.increaseFeel.bind(this)}
                             addpost={this.newPost.bind(this)}/>
                         {this.state.currentChat ? 
-                            <Chat currentUser={this.state.currentUser} chat={this.props.chats.find((current) => {
+                            <Chat chat={this.props.chats.find((current) => {
                                             return current._id == this.state.currentChat._id })}
                                              newMessage={this.sendMessage.bind(this)}/>
                             : <div></div>
