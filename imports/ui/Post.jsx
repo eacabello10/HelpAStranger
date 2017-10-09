@@ -15,7 +15,7 @@ class Post extends Component {
                     <div className="post-text">{this.props.post.text}</div>
                 </div>
                 <div className="row">
-                    <div>
+                    <div className="buttonDiv">
                         <button className="btn btn-success col-md-4" onClick={() => {this.props.vote("animo", this.props.post._id)}}>Animo {this.props.post.animos}</button>
                         <button className="btn btn-info col-md-4" onClick={() => {this.props.vote("nogive", this.props.post._id)}}>No te Rindas {this.props.post.nogive}</button>
                         <button className="btn btn-danger col-md-4" onClick={() => {this.props.vote("better", this.props.post._id)}}>Todo mejorará {this.props.post.better}</button>
