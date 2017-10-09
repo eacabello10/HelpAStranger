@@ -23,7 +23,7 @@ class Navigation extends Component {
                         </div>
                         <div className="collapse navbar-collapse" id="myNavbar">
                             <ul className="nav navbar-nav">
-                                <li className="active"><AccountsUIWrapper /></li>
+                                <li className="active"><AccountsUIWrapper />Hola</li>
                             </ul>
                         </div>
                     </div>

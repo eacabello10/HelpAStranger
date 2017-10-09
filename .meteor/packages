@@ -21,3 +21,4 @@ twbs:bootstrap
 react-meteor-data
 accounts-ui
 accounts-password
+useraccounts:bootstrap
