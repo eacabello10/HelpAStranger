@@ -10,7 +10,7 @@ class Navigation extends Component {
 
     render(){
         return (
-            <div  className="navigationBar">
+            <div className="navigationBar">
                 <nav className="navbar navbar-inverse">
                     <div className="container-fluid">
                         <div className="navbar-header">
