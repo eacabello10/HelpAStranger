@@ -135,8 +135,8 @@ class App extends Component {
                         }
                     </div>
                 </div>
-                <Footer help = {Meteor.users().fetch().count()} rooms = {chats.lenght}
-                    post = {posts.lenght}/>
+                <Footer help = {1000000} rooms = {this.props.chats.length}
+                    posted = {this.props.posts.length} />
             </div>)
     }
 }

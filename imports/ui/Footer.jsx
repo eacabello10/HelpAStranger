@@ -15,9 +15,9 @@ class Footer extends Component {
                             <p id="copy">&copy; 2017 Jairo Emilio Bautista Mora &amp; Eduardo Cabello</p>
                         </div>
                         <div className="col-sm-6"> 
-                            <p>Gente ayudada {this.props.help}</p>
-                            <p>Posts Publicados {this.props.posted}</p>
-                            <p>Salas de Chat ayudada {this.props.rooms}</p>
+                            <p>Gente ayudada {this.props.help} - 
+                            Posts Publicados {this.props.posted} -
+                            Salas de Chat ayudada {this.props.rooms}</p>
                         </div>
                     </div>
                 </footer>
