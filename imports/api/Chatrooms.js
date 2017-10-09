@@ -4,6 +4,8 @@ import {check} from "meteor/check";
 
 export const Chatrooms = new Mongo.Collection("Chatrooms");
 
+import {UserInfo} from "./UserInfo.js";
+
 if (Meteor.isServer) {
     // This code only runs on the server
     Meteor.publish("chats", function chatsPublication() {
@@ -39,7 +41,8 @@ Meteor.methods({
         if (!Meteor.user()) {
             throw new Meteor.Error("not-authorized");
         }
-
+        user.chatrooms = user.chatrooms.concat(chat);
+        console.log(user);
         Chatrooms.update(chat._id, {
             $push : {
                 participants : user
