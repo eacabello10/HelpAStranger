@@ -9,6 +9,11 @@ class Chat extends Component {
         super(props);
     }
 
+    sendMessage(){
+        this.props.newMessage(this.input.value);
+    }
+
+
     render(){
         return (
         <div  className="chat col-sm-5">
@@ -24,8 +29,8 @@ class Chat extends Component {
                 </div>
         
                 <div className="message">
-                    <input className="usermsg form-control" type="text" id="usermsg" size="63" />
-                    <button className="submitmsg btn">Send</button>
+                    <input className="usermsg form-control" type="text" ref={(in) => this.input = in} id="usermsg" size="63" />
+                    <button className="submitmsg btn" onClick={this.sendMessage.bind(this)}>Send</button>
                 </div>
             </div>
         </div>

@@ -25,7 +25,7 @@ class App extends Component {
                 {
                     text: "hello",
                     author: "anontest",
-                    date: (new Date()).getTime()
+                    date: (new Date()).toDateString() + " " + (new Date()).toLocaleTimeString() 
                 }
             ]
         }
@@ -63,10 +63,11 @@ class App extends Component {
     }
 
     sendMessage(text) {
+        let author = this.state.currentUser.anon;
         let newMessage = {
-            text: "hi",
-            author: "anontest2",
-            date: (new Date()).getTime()
+            text: text,
+            author: author,
+            date: (new Date()).toDateString() + " " + (new Date()).toLocaleTimeString() 
         }
         this.setState({
             messages: messages.append(newMessage)
@@ -77,7 +78,7 @@ class App extends Component {
         let newPost = {
             text : text,
             author : "anontest",
-            date : (new Date()).getTime(),
+            date : (new Date()).toDateString() + " " + (new Date()).toLocaleTimeString(),
             animos : 0,
             nogive : 0,
             better : 0,
