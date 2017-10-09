@@ -2,11 +2,16 @@
   box-sizing: border-box
 }
 
-footer {
+.footInfo {
   color : white;
   background-color: rgb(35, 32, 32);
   font-size: 12px;
   margin-top: 10px;
+  position: fixed;
+  height: 50px;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navigationBar {
@@ -16,10 +21,49 @@ footer {
   left: 0px;
   right: 0px;
   clear: both;
-  background-color: #232020;
   z-index: 1000;
 }
 
-.container {
-  padding: 10px 3em;
+.postViewer {
+  padding-top: 100px;
+  left : 230px;
+}
+
+.menu {
+  position: fixed;
+  left : 0px;
+  top : 50px;
+}
+
+
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  height: 100vh;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #6d7fcc;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+#sidebar ul li a:hover {
+  color: #7386D5;
+  background: #fff;
 }
