@@ -19,7 +19,7 @@ class Chat extends Component {
         <div  className="chat col-sm-5">
             <div className="row">
                 <div id="menu">
-                    <p className="welcome">Welcome, <b></b></p>
+                    <p className="welcome">Welcome<b></b></p>
                 </div>
         
                 <div id="chatbox">
@@ -29,7 +29,7 @@ class Chat extends Component {
                 </div>
         
                 <div className="message">
-                    <input className="usermsg form-control" type="text" ref={(in) => this.input = in} id="usermsg" size="63" />
+                    <input className="usermsg form-control" type="text" ref={(input) => this.input = input} id="usermsg" size="63" />
                     <button className="submitmsg btn" onClick={this.sendMessage.bind(this)}>Send</button>
                 </div>
             </div>

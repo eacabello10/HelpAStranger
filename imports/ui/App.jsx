@@ -70,7 +70,7 @@ class App extends Component {
             date: (new Date()).toDateString() + " " + (new Date()).toLocaleTimeString() 
         }
         this.setState({
-            messages: messages.append(newMessage)
+            messages: this.state.messages.concat(newMessage)
         });
     }
 
