@@ -22,7 +22,7 @@ class Chat extends Component {
     }
 
     scrollToBottom() {
-    this.chbox.scrollTop = this.chbox.scrollHeight - this.chbox.clientHeight;;
+    this.chbox.scrollTop = this.chbox.scrollHeight - this.chbox.clientHeight;
   }
 
     render(){
