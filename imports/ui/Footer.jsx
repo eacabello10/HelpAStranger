@@ -8,8 +8,8 @@ class Footer extends Component {
 
     render(){
         return (
-            <div  className="footInfo">
-                <footer className="container-fluid">
+            <div className="footInfo">
+                <footer className="fixed-bottom">
                     <div className="row">
                         <div className="col-sm-6">
                             <p id="copy">&copy; 2017 Jairo Emilio Bautista Mora &amp; Eduardo Cabello</p>

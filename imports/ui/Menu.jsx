@@ -9,7 +9,7 @@ class Menu extends Component {
     render(){
         return (
             <div  className="menu col-md-2">
-                
+                Menu To be implemented
             </div>
         )
     }

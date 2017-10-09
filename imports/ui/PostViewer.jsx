@@ -4,8 +4,6 @@ import PropTypes from "prop-types";
 import Post from "./Post.jsx";
 import PostInput from "./PostInput.jsx";
 
-import "./PostViewer.css";
-
 class PostViewer extends Component {
     constructor(props){
         super(props);

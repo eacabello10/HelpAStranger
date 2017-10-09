@@ -20,6 +20,9 @@ a {
     background:#EBF4FB;
     width:504px;
     border:1px solid #ACD8F0;
+    position: fixed;
+    top : 100px;
+    right: 40px; 
 }
 
 #chatbox {
