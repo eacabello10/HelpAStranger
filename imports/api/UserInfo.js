@@ -31,14 +31,10 @@ Meteor.methods({
         });
         return user;
     },
-    "user.find" (username) {
-        check(username, String);
-        let user = UserInfo.find({id : username}).fetch()[0];
-        if(user){
-            return user;
-        } else {
-            return null;
-        }
+    "user.find" (userId) {
+        check(userId, String);
+        let user = UserInfo.find({userId : userId}).fetch()[0];
+        return user;
 
     },
     "user.addChat"(chatId){

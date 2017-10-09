@@ -6,13 +6,13 @@ export const Chatrooms = new Mongo.Collection("Chatrooms");
 
 if (Meteor.isServer) {
     // This code only runs on the server
-    Meteor.publish('chats', function postPublication() {
-        return Posts.find();
+    Meteor.publish("chats", function chatsPublication() {
+        return Chatrooms.find();
     });
 }
 
 Meteor.methods({
-    'chats.createchat' (chat) {
+    "chats.createchat" (chat) {
         check(chat, Object);
 
         // Make sure the user is logged in before inserting a task
@@ -24,11 +24,43 @@ Meteor.methods({
 
         if(searchForChat.count() == 0){
             chat._id = Chatrooms.insert(chat);
+            return chat;
         }else {
-            
-            //searchForChat.fetch[]
+            var randomChat = Math.floor(Math.random()*searchForChat.count());
+            chat = searchForChat.fetch()[randomChat];
+            return chat;
+        } 
+    }, 
+    "chats.addme" (user ,chat) {
+        check(user, Object);
+        check(chat, Object);
+
+        // Make sure the user is logged in before inserting a task
+        if (!Meteor.user()) {
+            throw new Meteor.Error("not-authorized");
         }
 
-        
-    }
+        Chatrooms.update(chat._id, {
+            $push : {
+                participants : user
+            }
+        });
+        return Chatrooms.findOne(chat._id);
+    },
+    "chats.send" (message ,chat) {
+        check(message, Object);
+        check(chat, Object);
+
+        // Make sure the user is logged in before inserting a task
+        if (!Meteor.user()) {
+            throw new Meteor.Error("not-authorized");
+        }
+
+        Chatrooms.update(chat._id, {
+            $push : {
+                messages : message
+            }
+        });
+        return Chatrooms.findOne(chat._id);
+    },
 });

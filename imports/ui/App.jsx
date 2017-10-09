@@ -22,13 +22,6 @@ class App extends Component {
         this.state = {
             currentUser : null,
             currentChat : null,
-            messages: [
-                {
-                    text: "hello",
-                    author: "anontest",
-                    date: (new Date()).toDateString() + " " + (new Date()).toLocaleTimeString() 
-                }
-            ]
         }
     }
 
@@ -36,6 +29,9 @@ class App extends Component {
         if (!this.state.currentUser && newProps.user) {
             this.onUserEnter(newProps.user.username)
         } 
+        if (this.state.currentUser && newProps.user) {
+            
+        }
         if (this.state.currentUser && newProps.user === null) {
             this.setState({
                 currentUser : null
@@ -48,10 +44,10 @@ class App extends Component {
         Tracker.autorun (function() {
             const userID = Meteor.user()._id;
             Meteor.call("user.find", userID, (error, result) => {
-                if (result === null) {
-                    Meteor.call("user.create", userID,  function (error, result) {
+                if (result == undefined) {
+                    Meteor.call("user.create", userID,  function (error2, result2) {
                         yo.setState({
-                            currentUser : result
+                            currentUser : result2
                         });
                     });
                 } else {
@@ -80,29 +76,43 @@ class App extends Component {
             author: author,
             date: (new Date()).toDateString() + " " + (new Date()).toLocaleTimeString() 
         }
-        this.setState({
-            messages: this.state.messages.concat(newMessage)
+        Meteor.call("chats.send", newMessage, this.state.currentChat, (error, result) => {
+            this.setState({
+                currentChat: result
+            });
         });
     }
 
     newPost(text){
         let newPost = {
             text : text,
-            author : "anontest",
+            author : this.state.currentUser.anon,
             date : (new Date()).toDateString() + " " + (new Date()).toLocaleTimeString(),
             animos : 0,
             nogive : 0,
             better : 0,
-            keywords : []
+            keywords : ["hola", "estano"]
         }
-        Meteor.call('posts.insert', newPost, (error, result) => {
-            let chat = {
-                keyword : newPost.keywords.slice(0,1),
-                participants : [],
-                messages : [] 
-            };
-            Meteor.call("chats.createchat", chat, (error, result) => {
-
+        Tracker.autorun (() => {
+            Meteor.call('posts.insert', newPost, (error, result) => {
+                let chat = {
+                    keyword : newPost.keywords.slice(0,1),
+                    participants : [],
+                    messages : [] 
+                };
+                Meteor.call("chats.createchat", chat, (error3, result3) => {
+                    Meteor.call("chats.addme", this.state.currentUser, result3, (error2, result2) => {
+                        this.setState({
+                            currentChat : result2
+                        }, () => {
+                            /**if (Meteor.isServer) {
+                                Meteor.publish("chats.current", function currenChatPubliction(){
+                                    return Chats.find({_id : result._id});
+                                });
+                            }*/
+                        });
+                    });
+                });
             });
         });
     }
@@ -117,7 +127,12 @@ class App extends Component {
                         <Menu/>
                         <PostViewer posts={this.props.posts} vote={this.increaseFeel.bind(this)}
                             addpost={this.newPost.bind(this)}/>
-                        <Chat messages={this.state.messages} newMessage={this.sendMessage.bind(this)}/>
+                        {this.state.currentChat ? 
+                            <Chat chat={this.props.chats.find((current) => {
+                                            return current._id == this.state.currentChat._id })}
+                                             newMessage={this.sendMessage.bind(this)}/>
+                            : <div></div>
+                        }
                     </div>
                 </div>
                 <Footer count = {1}/>
@@ -135,9 +150,11 @@ export default createContainer(()=>{
 
     Meteor.subscribe("posts");
     Meteor.subscribe("anons");
+    Meteor.subscribe("chats");
 
     return { posts : Posts.find({}, { sort: { date: -1 } }).fetch(),
              user : Meteor.user(),
-             chats : Chatrooms.find({}).fetch(),        
+             chats : Chatrooms.find({}).fetch(),
+
     };
 }, App);

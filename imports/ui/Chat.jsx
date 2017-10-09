@@ -14,11 +14,15 @@ class Chat extends Component {
     }
 
     componentDidMount() {
-    this.scrollToBottom();
+        this.scrollToBottom();
   }
 
     componentDidUpdate(){
         this.scrollToBottom();
+    }
+
+    componentWillUpdate(nuevos){
+
     }
 
     scrollToBottom() {
@@ -30,11 +34,12 @@ class Chat extends Component {
         <div  className="chat col-sm-5">
             <div className="row">
                 <div id="menu">
-                    <p className="welcome">Welcome<b></b></p>
+                    <p className="welcome">{this.props.chat.keyword[0]} </p>
+                    
                 </div>
         
                 <div id="chatbox" ref={(chbox) => this.chbox = chbox}>
-                {this.props.messages.map((message, i) => {
+                {this.props.chat.messages.map((message, i) => {
                     return <Message message={message} key={i}/>
                 })}
                 </div>
@@ -50,7 +55,7 @@ class Chat extends Component {
 }
 
 Chat.propTypes = {
-    messages: PropTypes.array.isRequired
+    chat: PropTypes.object.isRequired
 };
 
 export default Chat;
