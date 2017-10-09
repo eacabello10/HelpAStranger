@@ -24,6 +24,11 @@ Meteor.methods({
         let anonName = Anons.find({ id: randonName}).fetch()[0];
         user.anon = anonName.name+anonName.use;
         user._id = UserInfo.insert(user);
+        Anons.update({ id: randonName}, {
+            $inc: {
+                use: 1
+            }
+        });
         return user;
     },
     "user.find" (username) {

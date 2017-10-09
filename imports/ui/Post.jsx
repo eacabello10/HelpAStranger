@@ -16,9 +16,9 @@ class Post extends Component {
                 </div>
                 <div className="row">
                     <div>
-                        <button className="btn btn-success col-md-4">Animo {this.props.post.animos}</button>
-                        <button className="btn btn-info col-md-4">No te Rindas {this.props.post.nogive}</button>
-                        <button className="btn btn-danger col-md-4">Todo mejorará {this.props.post.better}</button>
+                        <button className="btn btn-success col-md-4" onClick={() => {this.props.vote("animo", this.props.post._id)}}>Animo {this.props.post.animos}</button>
+                        <button className="btn btn-info col-md-4" onClick={() => {this.props.vote("nogive", this.props.post._id)}}>No te Rindas {this.props.post.nogive}</button>
+                        <button className="btn btn-danger col-md-4" onClick={() => {this.props.vote("better", this.props.post._id)}}>Todo mejorará {this.props.post.better}</button>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,8 @@ class Post extends Component {
 }
 
 Post.propTypes = {
-    
+    post : PropTypes.object.isRequired,
+    vote : PropTypes.func.isRequired
 };
 
 export default Post;

@@ -62,6 +62,16 @@ class App extends Component {
         }); 
     }
 
+    increaseFeel(feel, post){
+        if(feel == "animo"){
+            Meteor.call("posts.animo", post);
+        } else if(feel == "nogive") {
+            Meteor.call("posts.noGive", post);
+        } else if(feel == "better"){
+            Meteor.call("posts.better", post);
+        }
+    }
+
     sendMessage(text) {
         let author = this.state.currentUser.anon;
         let newMessage = {
@@ -95,7 +105,8 @@ class App extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <Menu/>
-                        <PostViewer posts={this.props.posts} addpost={this.newPost.bind(this)}/>
+                        <PostViewer posts={this.props.posts} vote={this.increaseFeel.bind(this)}
+                            addpost={this.newPost.bind(this)}/>
                         <Chat messages={this.state.messages} newMessage={this.sendMessage.bind(this)}/>
                     </div>
                 </div>

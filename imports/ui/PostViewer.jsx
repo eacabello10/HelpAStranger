@@ -16,7 +16,7 @@ class PostViewer extends Component {
                 {!Meteor.user() ? <div></div> : <PostInput addpost={this.props.addpost}/> }
                 <div className="posts">
                     {this.props.posts.map((post, i) => {
-                        return <Post post={post} key={i}/>
+                        return <Post post={post} key={i} vote={this.props.vote}/>
                     })}
                 </div>
             </div>
@@ -26,6 +26,7 @@ class PostViewer extends Component {
 
 PostViewer.propTypes = {
     addpost : PropTypes.func.isRequired,
+    vote : PropTypes.func.isRequired,
     posts : PropTypes.array.isRequired
 };
 
