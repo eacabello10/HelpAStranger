@@ -13,6 +13,17 @@ class Chat extends Component {
         this.props.newMessage(this.input.value);
     }
 
+    componentDidMount() {
+    this.scrollToBottom();
+  }
+
+    componentDidUpdate(){
+        this.scrollToBottom();
+    }
+
+    scrollToBottom() {
+    this.chbox.scrollTop = this.chbox.scrollHeight - this.chbox.clientHeight;;
+  }
 
     render(){
         return (
@@ -22,7 +33,7 @@ class Chat extends Component {
                     <p className="welcome">Welcome<b></b></p>
                 </div>
         
-                <div id="chatbox">
+                <div id="chatbox" ref={(chbox) => this.chbox = chbox}>
                 {this.props.messages.map((message, i) => {
                     return <Message message={message} key={i}/>
                 })}
