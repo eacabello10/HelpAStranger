@@ -14,7 +14,11 @@ class Footer extends Component {
                         <div className="col-sm-6">
                             <p id="copy">&copy; 2017 Jairo Emilio Bautista Mora &amp; Eduardo Cabello</p>
                         </div>
-                        <div className="col-sm-6">Gente ayudada {this.props.count}</div>
+                        <div className="col-sm-6"> 
+                            <p>Gente ayudada {this.props.help}</p>
+                            <p>Posts Publicados {this.props.posted}</p>
+                            <p>Salas de Chat ayudada {this.props.rooms}</p>
+                        </div>
                     </div>
                 </footer>
             </div>
@@ -23,7 +27,9 @@ class Footer extends Component {
 }
 
 Footer.propTypes = {
-    count : PropTypes.number.isRequired
+    help : PropTypes.number.isRequired,
+    posted : PropTypes.number.isRequired,
+    rooms : PropTypes.number.isRequired
 };
 
 export default Footer;
