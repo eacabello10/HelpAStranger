@@ -29,7 +29,7 @@ class Chat extends Component {
                 </div>
         
                 <div className="message">
-                    <input className="usermsg form-control" type="text" ref={(input) => this.input = input} id="usermsg" size="63" />
+                    <input className="usermsg form-control" type="text" ref={(inp) => this.input = inp} id="usermsg" size="63" />
                     <button className="submitmsg btn" onClick={this.sendMessage.bind(this)}>Send</button>
                 </div>
             </div>
