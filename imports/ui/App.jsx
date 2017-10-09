@@ -33,13 +33,33 @@ class App extends Component {
 
     componentWillUpdate(newProps){
         if (!this.state.currentUser && newProps.user) {
-            this.onUserEnter(newProps.user.userName)
+            this.onUserEnter(newProps.user.username)
+        } 
+        if (this.state.currentUser && newProps.user === null) {
+            this.setState({
+                currentUser : null
+            });
         }
     }
 
     onUserEnter(userName){
-        const userID = Meteor.users.findOne({userName});
-        console.log(userID);
+        var yo = this;
+        Tracker.autorun (function() {
+            const userID = Meteor.user()._id;
+            Meteor.call("user.find", userID, (error, result) => {
+                if (result === null) {
+                    Meteor.call("user.create", userID,  function (error, result) {
+                        yo.setState({
+                            currentUser : result
+                        });
+                    });
+                } else {
+                    yo.setState({
+                        currentUser : result
+                    });
+                }
+            });
+        }); 
     }
 
     sendMessage(text) {
@@ -64,7 +84,6 @@ class App extends Component {
             keywords : []
         }
         Meteor.call('posts.insert', newPost);
-        console.log(this.props.posts);
     }
 
     render(){

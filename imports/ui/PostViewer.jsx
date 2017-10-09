@@ -13,7 +13,6 @@ class PostViewer extends Component {
     }
 
     render(){
-        console.log(Meteor.user());
         return (
             <div className="postViewer col-sm-5">
                 {!Meteor.user() ? <div></div> : <PostInput addpost={this.props.addpost}/> }

@@ -4,7 +4,7 @@ export const Anons = new Mongo.Collection("Anons");
 
 if (Meteor.isServer) {
     // This code only runs on the server
-    Meteor.publish("anons", function postPublication() {
+    Meteor.publish("anons", function anonPublication() {
         return Anons.find();
     });
 }
