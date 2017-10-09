@@ -142,9 +142,16 @@ class App extends Component {
                         this.setState({
                             currentChat : result2
                         });
+                        
                     });
                 });
             });
+        });
+    }
+
+    selectChat(chat){
+        this.setState({
+            currentChat : chat
         });
     }
 
@@ -155,7 +162,11 @@ class App extends Component {
                 
                 <div className="container-fluid">
                     <div className="row">
-                        <Menu/>
+                        {this.state.currentUser ? 
+                                <Menu info={this.state.currentUser} change={this.selectChat.bind(this)}/>
+                                : <div>Por favor inicia sesión</div>
+                            }
+                        
                         <PostViewer posts={this.props.posts} vote={this.increaseFeel.bind(this)}
                             addpost={this.newPost.bind(this)}/>
                         {this.state.currentChat ? 

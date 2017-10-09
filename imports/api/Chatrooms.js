@@ -42,7 +42,11 @@ Meteor.methods({
             throw new Meteor.Error("not-authorized");
         }
         user.chatrooms = user.chatrooms.concat(chat);
-        console.log(user);
+        UserInfo.update(user._id, {
+            $set : {
+                chatrooms : user.chatrooms
+            }
+        });
         Chatrooms.update(chat._id, {
             $push : {
                 participants : user
