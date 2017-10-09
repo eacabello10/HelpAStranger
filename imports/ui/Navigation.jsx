@@ -10,13 +10,6 @@ class Navigation extends Component {
 
     render(){
         return (
-<<<<<<< HEAD
-        <div  className="navigationBar">
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                    <a class="navbar-brand" href="#">HelpAStranger</a>
-=======
             <div  className="navigationBar">
                 <nav className="navbar navbar-inverse">
                     <div className="container-fluid">
@@ -33,14 +26,9 @@ class Navigation extends Component {
                                 <li className="active"><AccountsUIWrapper />Hola</li>
                             </ul>
                         </div>
->>>>>>> master
                     </div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><AccountsUIWrapper></AccountsUIWrapper>Login</a></li>
-                </ul>
-                </div>
-            </nav>
-        </div>
+                </nav>
+            </div>
         )
     }
 }
