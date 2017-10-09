@@ -10,6 +10,8 @@ import Chat from "./Chat.jsx";
 
 import {Posts} from "../api/Posts.js";
 import {Chatrooms} from "../api/Chatrooms.js";
+import {Anons} from "../api/Anons.js";
+import {UserInfo} from "../api/UserInfo.js";
 
 
 import "./App.css";
@@ -31,8 +33,13 @@ class App extends Component {
 
     componentWillUpdate(newProps){
         if (!this.state.currentUser && newProps.user) {
-            
+            this.onUserEnter(newProps.user.userName)
         }
+    }
+
+    onUserEnter(userName){
+        const userID = Meteor.users.findOne({userName});
+        console.log(userID);
     }
 
     sendMessage(text) {
@@ -56,7 +63,7 @@ class App extends Component {
             better : 0,
             keywords : []
         }
-        Posts.insert(newPost);
+        Meteor.call('posts.insert', newPost);
         console.log(this.props.posts);
     }
 
@@ -85,10 +92,11 @@ App.propTypes = {
 
 export default createContainer(()=>{
 
-    Meteor.subscribe('tasks');
+    Meteor.subscribe("posts");
+    Meteor.subscribe("anons");
 
     return { posts : Posts.find({}, { sort: { date: -1 } }).fetch(),
              user : Meteor.user(),
-             chats : Chatrooms.find({}).fetch()        
+             chats : Chatrooms.find({}).fetch(),        
     };
 }, App);
