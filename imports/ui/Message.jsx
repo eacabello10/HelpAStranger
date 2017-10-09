@@ -11,7 +11,7 @@ class Message extends Component {
     render(){
         return (
         <div className="message col-sm-6">
-            <h4>{this.props.message.text}</h4>
+            <h4 className="mess">{this.props.message.text}</h4>
             <h6>{this.props.message.author} on: {this.props.message.date}</h6>
         </div>
         )
