@@ -21,6 +21,7 @@ class App extends Component {
         super(props);
         this.state = {
             currentUser : null,
+            currentChat : null,
             messages: [
                 {
                     text: "hello",
@@ -94,7 +95,16 @@ class App extends Component {
             better : 0,
             keywords : []
         }
-        Meteor.call('posts.insert', newPost);
+        Meteor.call('posts.insert', newPost, (error, result) => {
+            let chat = {
+                keyword : newPost.keywords.slice(0,1),
+                participants : [],
+                messages : [] 
+            };
+            Meteor.call("chats.createchat", chat, (error, result) => {
+
+            });
+        });
     }
 
     render(){
