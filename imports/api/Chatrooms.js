@@ -11,7 +11,7 @@ if (Meteor.isServer) {
     });
 }
 
-eteor.methods({
+Meteor.methods({
     'chats.createchat' (chat) {
         check(chat, Object);
 
@@ -26,7 +26,7 @@ eteor.methods({
             chat._id = Chatrooms.insert(chat);
         }else {
             
-            searchForChat.fetch[]
+            //searchForChat.fetch[]
         }
 
         
