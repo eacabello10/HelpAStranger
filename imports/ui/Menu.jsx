@@ -15,7 +15,7 @@ class Menu extends Component {
                             <p>Estos son sus chats</p>
                             <ul>
                                 {this.props.info.chatrooms.map((chat, i) => {
-                                    return (<li><button className="btn" onClick={() => this.props.change(chat)}>
+                                    return (<li key={i}><button className="btn" onClick={() => this.props.change(chat)}>
                                 {chat.keywords[0]}</button></li>)
                                 })}
                             </ul>

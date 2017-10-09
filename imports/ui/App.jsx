@@ -170,7 +170,7 @@ class App extends Component {
                         <PostViewer posts={this.props.posts} vote={this.increaseFeel.bind(this)}
                             addpost={this.newPost.bind(this)}/>
                         {this.state.currentChat ? 
-                            <Chat chat={this.props.chats.find((current) => {
+                            <Chat currentUser={this.state.currentUser} chat={this.props.chats.find((current) => {
                                             return current._id == this.state.currentChat._id })}
                                              newMessage={this.sendMessage.bind(this)}/>
                             : <div></div>
