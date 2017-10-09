@@ -40,7 +40,7 @@ class Chat extends Component {
         
                 <div id="chatbox" ref={(chbox) => this.chbox = chbox}>
                 {this.props.chat.messages.map((message, i) => {
-                    return <Message message={message} key={i}/>
+                    return <Message currentUser={this.props.currentUser} message={message} key={i}/>
                 })}
                 </div>
         
