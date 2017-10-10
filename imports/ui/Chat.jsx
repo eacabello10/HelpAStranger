@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Message from "./Message.jsx"
 import "./Chat.css";
-
+//El código está muy bien, se encuentra modularizado
 class Chat extends Component {
     constructor(props){
         super(props);
