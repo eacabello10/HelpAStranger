@@ -28,7 +28,7 @@ class Chat extends Component {
     scrollToBottom() {
     this.chbox.scrollTop = this.chbox.scrollHeight - this.chbox.clientHeight;
   }
-
+//Se podría mejorar el html del chat o colocarlo en una pestaña diferente
     render(){
         return (
         <div  className="chat col-sm-5">
