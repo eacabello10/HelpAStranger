@@ -37,7 +37,7 @@ Meteor.methods({
         return user;
 
     },
-    "user.addChat"(chatId){
+    "user.addChat"(){ // el parametro no se usa
         if (!Meteor.user()) {
             throw new Meteor.Error("not-authorized");
         }
