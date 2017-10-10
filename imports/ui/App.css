@@ -17,9 +17,10 @@
 .navigationBar {
   position: fixed;
   width: 100%;
-  top: 0px;
-  left: 0px;
-  right: 0px;
+  // no es necesario colocar unidades al 0
+  top: 0;
+  left: 0;
+  right: 0;
   clear: both;
   z-index: 1000;
 }
@@ -31,6 +32,6 @@
 
 .menu {
   position: fixed;
-  left : 0px;
+  left : 0;
   top : 50px;
 }
