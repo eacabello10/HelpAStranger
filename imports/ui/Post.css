@@ -25,5 +25,14 @@
 }
 .btn-danger{
     background-color: #9E7B9B;
-    border-color: #9E7B9B; 
+    border-color: #9E7B9B;
+    color: #000036;
+}
+
+.btn-success{
+    color: #00008b;
+}
+
+.btn-info{
+    color: #00008b;
 }
