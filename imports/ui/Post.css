@@ -11,7 +11,9 @@
     max-height: 100px;
     display: inline-block;
     padding: 10px 15px;
-    margin: 0px 10px;
+    margin: 15px 45px;
+    background-color: #F2F5EA;
+    overflow: scroll;
 }
 
 .row{
@@ -20,4 +22,8 @@
 
 .buttonDiv{
 	padding: 0px 15px;
+}
+.btn-danger{
+    background-color: #9E7B9B;
+    border-color: #9E7B9B; 
 }

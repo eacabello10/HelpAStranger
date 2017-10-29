@@ -4,7 +4,7 @@
 
 .footInfo {
   color : white;
-  background-color: rgb(35, 32, 32);
+  background-color: #1F2041;
   font-size: 12px;
   margin-top: 10px;
   position: fixed;
@@ -34,3 +34,4 @@
   left : 0px;
   top : 50px;
 }
+
