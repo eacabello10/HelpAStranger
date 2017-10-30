@@ -18,9 +18,9 @@ class Navigation extends Component {
                     <div className="navbar-header">
                         <a className="navbar-brand" href="#">HelpAStranger</a>
                     </div>
-                    <ul className="nav navbar-nav navbar-left">
+                    <div className="nav navbar-nav navbar-left">
                         <a className="boton-login"><AccountsUIWrapper/></a>
-                    </ul>
+                    </div>
                 </div>
             </nav>
         </div>
