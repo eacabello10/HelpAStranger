@@ -22,7 +22,7 @@ Meteor.methods({
             throw new Meteor.Error("not-authorized");
         }
 
-        let searchForChat = Chatrooms.find({keywords : chat.keywords[0]});
+        let searchForChat = Chatrooms.find({keywords : chat.keywords});
 
         if(searchForChat.count() == 0){
             chat._id = Chatrooms.insert(chat);

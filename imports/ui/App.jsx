@@ -115,7 +115,7 @@ class App extends Component {
               return b.total - a.total;
             });
 
-            keywords = finalWordsArray.map((word) => {
+            let keywords = finalWordsArray.map((word) => {
                 return word.name;
             });
 
