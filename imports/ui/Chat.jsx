@@ -43,7 +43,7 @@ class Chat extends Component {
                     return <Message currentUser={this.props.currentUser} message={message} key={i}/>
                 })}
                 </div>
-        
+                <!--Deberían utilizar atributos de accesibilidad de aria como aria-labelledby-->
                 <div className="message">
                     <input className="usermsg form-control" type="text" ref={(inp) => this.input = inp} id="usermsg" size="63" />
                     <button className="submitmsg btn" onClick={this.sendMessage.bind(this)}>Send</button>
