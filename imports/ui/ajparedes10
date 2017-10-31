@@ -1,6 +1,5 @@
 #bienvenida {
-	border: dashed;
-	border-color: #CCCC99;
+	border: dashed #CCCC99;
 	border-radius: 5%;
 	background: #9B9987;
 	margin-bottom: 10px;
