@@ -30,6 +30,9 @@ Meteor.methods({
         }else {
             var randomChat = Math.floor(Math.random()*searchForChat.count());
             chat = searchForChat.fetch()[randomChat];
+            //Andrés Felipe Verdugo CodeReview
+            //Recuerda usar para variables let, para mantener ES6
+            //Los métodos de Meteor están correctamente declarados 
             return chat;
         } 
     }, 
